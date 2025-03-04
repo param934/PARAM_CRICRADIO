@@ -50,11 +50,9 @@ android {
 }
 
 dependencies {
-    implementation("io.ktor:ktor-client-cio:2.3.0")
-    implementation("io.ktor:ktor-client-websockets:2.3.0")
-    implementation("io.ktor:ktor-client-core:2.3.0")
-    implementation("io.ktor:ktor-client-okhttp:2.3.0")
-    implementation("io.ktor:ktor-client-websockets:2.3.1")
+    implementation(libs.ktor.client.cio)
+    implementation(libs.ktor.client.websockets)
+    implementation(libs.ktor.client.okhttp)
 
     implementation(libs.hilt.android)
     implementation(libs.firebase.appdistribution.gradle)
