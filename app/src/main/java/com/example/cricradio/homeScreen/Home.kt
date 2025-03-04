@@ -1,28 +1,51 @@
-package com.example.cricradio
+package com.example.cricradio.homeScreen
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.cricradio.api.CricViewModel
 
 @Composable
-fun HomeScreen(viewModel: CricketViewModel = hiltViewModel()) {
-    val matchKey = "SA_vs_SL_2024-12-05_1732276435.300452"
-    val miniScorecard by viewModel.miniScorecard.collectAsState()
-    val venueInfo by viewModel.venueInfo.collectAsState()
+fun HomeScreen(viewModel: CricViewModel) {
+    val miniScorecard by viewModel.miniScorecard.collectAsState(initial = null)
+    val venueInfo by viewModel.venueInfo.collectAsState(initial = null)
 
-    LaunchedEffect(Unit) {
-        viewModel.fetchMatchDetails(matchKey)
+    LaunchedEffect("SA_vs_SL_2024-12-05_1732276435.300452") {
+        viewModel.fetchMatchDetails("SA_vs_SL_2024-12-05_1732276435.300452")
     }
 
-    Column(modifier = Modifier.padding(16.dp)) {
-        Text(text = "Match: ${miniScorecard?.matchTitle ?: "Loading..."}", style = MaterialTheme.typography.h6)
-        Text(text = "Score: ${miniScorecard?.score ?: "Loading..."}")
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+            .padding(top = 60.dp, start = 4.dp, end = 4.dp)
+            .verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        miniScorecard?.responseData?.result?.let { matchResult ->
+            MiniScorecard(matchResult)
+        }
+//        Spacer(modifier = Modifier.height(16.dp))
+//        venueInfo?.responseData?.venueResult?.let { venueResult ->
+//            VenueInfo(venueInfo, startingDate = venueResult.startDate?.formattedDate ?: "Unknown Date")
+//        }
+//        Spacer(modifier = Modifier.height(16.dp))
+//        venueInfo?.responseData?.venueResult?.let {Toss(venueInfo)}
         Spacer(modifier = Modifier.height(16.dp))
-        Text(text = "Venue: ${venueInfo?.venueName ?: "Loading..."}", style = MaterialTheme.typography.h6)
-        Text(text = "Location: ${venueInfo?.location ?: "Loading..."}")
+        venueInfo?.responseData?.venueResult?.let {Umpires(venueInfo)}
+        Spacer(modifier = Modifier.height(16.dp))
+        venueInfo?.responseData?.venueResult?.let {Weather(venueInfo)}
+        Spacer(modifier = Modifier.height(16.dp))
+//        TossCard()
     }
+
+
 }
+
 
