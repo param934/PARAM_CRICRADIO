@@ -20,7 +20,6 @@ fun HomeScreen(viewModel: CricViewModel) {
     LaunchedEffect("SA_vs_SL_2024-12-05_1732276435.300452") {
         viewModel.fetchMatchDetails("SA_vs_SL_2024-12-05_1732276435.300452")
     }
-
     Column(
         modifier = Modifier
             .fillMaxSize()
