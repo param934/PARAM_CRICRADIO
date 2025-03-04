@@ -57,7 +57,7 @@ fun Weather(venueResponse: VenueResponse?) {
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Start
     ) {
-        Text(text = "Weather", color = MaterialTheme.colorScheme.primary, fontSize = 14.sp)
+        Text(text = "Weather", color = MaterialTheme.colorScheme.primary, fontSize = 13.sp)
     }
     Spacer(Modifier.height(8.dp))
     Card(
@@ -69,25 +69,6 @@ fun Weather(venueResponse: VenueResponse?) {
             modifier = Modifier.padding(12.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-//            val context = LocalContext.current
-//            val request = ImageRequest.Builder(context)
-//                .data("https://cricradio-backend.s3.ap-south-1.amazonaws.com/cricradio_weather_icons/Frame+2608896.png")
-//                .crossfade(true)
-//                .listener(
-//                    onStart = { Log.d("ImageLoader", "Loading started") },
-//                    onSuccess = { _, _ -> Log.d("ImageLoader", "Image loaded successfully") },
-//                    onError = { _, result -> Log.e("ImageLoader", "Error loading image", result.throwable) }
-//                )
-//                .build()
-//
-//            AsyncImage(
-//                model = request,
-//                contentDescription = "Weather Icon",
-//                modifier = Modifier.size(100.dp),
-//                contentScale = ContentScale.Fit
-//            )
-
-
             AsyncImage(
                 model = "https://cricradio-backend.s3.ap-south-1.amazonaws.com/cricradio_weather_icons/Frame+2608896.png",
                 contentDescription = "weather_icon",

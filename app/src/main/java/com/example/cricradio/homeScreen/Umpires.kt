@@ -15,7 +15,7 @@ fun Umpires(venueResponse: VenueResponse?) {
         modifier = Modifier.fillMaxWidth(),
         horizontalArrangement = Arrangement.Start
     ) {
-        Text(text = "Umpires", color = MaterialTheme.colorScheme.primary, fontSize = 14.sp)
+        Text(text = "Umpires", color = MaterialTheme.colorScheme.primary, fontSize = 13.sp)
     }
     Spacer(Modifier.height(8.dp))
 

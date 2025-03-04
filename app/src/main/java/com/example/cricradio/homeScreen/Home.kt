@@ -10,6 +10,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.cricradio.api.CricViewModel
+import com.example.cricradio.websocket.WebSocketScreen
 
 @Composable
 fun HomeScreen(viewModel: CricViewModel) {
@@ -24,25 +25,28 @@ fun HomeScreen(viewModel: CricViewModel) {
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
-            .padding(top = 60.dp, start = 4.dp, end = 4.dp)
+            .padding(start = 4.dp, end = 4.dp)
             .verticalScroll(rememberScrollState()),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Spacer(modifier = Modifier.height(60.dp))
         miniScorecard?.responseData?.result?.let { matchResult ->
             MiniScorecard(matchResult)
         }
-//        Spacer(modifier = Modifier.height(16.dp))
-//        venueInfo?.responseData?.venueResult?.let { venueResult ->
-//            VenueInfo(venueInfo, startingDate = venueResult.startDate?.formattedDate ?: "Unknown Date")
-//        }
-//        Spacer(modifier = Modifier.height(16.dp))
-//        venueInfo?.responseData?.venueResult?.let {Toss(venueInfo)}
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(20.dp))
+        venueInfo?.responseData?.venueResult?.let { venueResult ->
+            VenueInfo(venueInfo, startingDate = venueResult.startDate?.formattedDate ?: "Unknown Date")
+        }
+        Spacer(modifier = Modifier.height(20.dp))
+        venueInfo?.responseData?.venueResult?.let {Toss(venueInfo)}
+        Spacer(modifier = Modifier.height(20.dp))
         venueInfo?.responseData?.venueResult?.let {Umpires(venueInfo)}
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(20.dp))
         venueInfo?.responseData?.venueResult?.let {Weather(venueInfo)}
-        Spacer(modifier = Modifier.height(16.dp))
-//        TossCard()
+        Spacer(modifier = Modifier.height(20.dp))
+        venueInfo?.responseData?.venueResult?.let { VenueStats(venueInfo) }
+        Spacer(modifier = Modifier.height(60.dp))
+        WebSocketScreen()
     }
 
 
