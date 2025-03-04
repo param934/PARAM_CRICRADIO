@@ -2,7 +2,7 @@
 
 ## 📝 Project Overview
 
-CricRadio is an advanced Android application built with modern Android development technologies, providing real-time cricket match information, live updates, and interactive features.
+We are developing an Android application that replicates the functionality of an existing Android app, using Jetpack Compose, Ktor WebSockets, and Hilt Dependency Injection. The app integrates with the Postman WebSocket Echo Service to demonstrate WebSocket functionality.
 
 ## ✨ Features
 
