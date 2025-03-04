@@ -28,8 +28,7 @@ We are developing an Android application that replicates the functionality of an
 * **Dependency Injection:** Hilt (v2.51.1)
 
 ### Key Libraries and Dependencies
-* **Networking:**
-  - Ktor HTTP Client & WebSockets (v2.3.4)
+* **Networking:** Ktor HTTP Client & WebSockets (v2.3.4)
 * **Serialization:** Kotlinx Serialization (v1.6.0)
 * **Image Loading:** Coil (v2.7.0)
 * **Build System:** Gradle with Kotlin DSL
